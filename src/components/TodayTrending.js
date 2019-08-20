@@ -9,7 +9,7 @@ const Ul = styled.ul`
 	// overflow: hidden;
 `
 const Li = styled(MiniProduct)`
-	color: red;
+
 `
 
 function TodayTrending({data, getClikedProduct}) {

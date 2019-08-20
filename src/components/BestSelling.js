@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 
-import BestSellingSingleProduct from './BestSellingSingleProduct';
+import SingleProductMini from './SingleProductMini';
 
 const Header = styled.header`
 	display: flex;
@@ -34,7 +34,7 @@ const Button = styled.button`
 
 function BestSelling({data}) {
 	const goodsList = data.map(good => (
-		<BestSellingSingleProduct key={good._id} good={good} />
+		<SingleProductMini key={good._id} good={good} />
 	))
 	return(
 		<div>

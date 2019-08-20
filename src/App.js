@@ -5,11 +5,11 @@ import axios from 'axios';
 import './App.css';
 
 import Home from './components/Home';
-import Product from './components/Product';
+import ProductPage from './components/ProductPage';
 
 function App() {
   const [data, setData] = useState([]);
-  const [clickedProduct, setClickedProduct] = useState([]);
+  const [clickedProduct, setClickedProduct] = useState([0]);
   
   const getClikedProduct = (product) => {
     setClickedProduct([])
@@ -42,8 +42,9 @@ function App() {
         exact 
         path={`/product/:name`} 
         render={(routeProps) => 
-          <Product 
-            data={clickedProduct} 
+          <ProductPage 
+            clickedProduct={clickedProduct}
+            allProductsList={data} 
             {...routeProps}
           />
         } 
