@@ -3,18 +3,25 @@ import styled from '@emotion/styled';
 import { Link } from 'react-router-dom';
 import MiniProduct from './MiniProduct';
 
-const Ul = styled.ul`
-	// display: flex;
-	// width: 100%;
-	// overflow: hidden;
+const TodayTrendingTitle = styled.h1`
+	text-align: left;
 `
-const Li = styled(MiniProduct)`
 
+const TodayTrendingList = styled.ul`
+	display: flex;
+	overflow-x: auto;
+	padding: 0;
+`
+const TodayTrendingItem = styled.li`
+	
 `
 
 function TodayTrending({data, getClikedProduct}) {
 	const goodsList = data.map(good => (
-		<Link to={`/product/${good.name}`} key={good._id}>
+		<Link 
+			to={`/product/${good.name}`} 
+			key={good._id}
+		>
 			<MiniProduct  
 				product={good} 
 				getClikedProduct={getClikedProduct} 
@@ -24,10 +31,10 @@ function TodayTrending({data, getClikedProduct}) {
 	
 	return(
 		<div>
-			<h1>Today Trending</h1>
-			<Ul>
+			<TodayTrendingTitle>Today Trending</TodayTrendingTitle>
+			<TodayTrendingList>
 				{goodsList}
-			</Ul>
+			</TodayTrendingList>
 		</div>
 	)
 }

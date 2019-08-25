@@ -4,9 +4,9 @@ import styled from '@emotion/styled';
 
 import Rating from './Rating';
 import Sizes from './Sizes';
+import CartCounter from './CartCounter';
 
-import Left from '../images/left.svg';
-import Right from '../images/right.svg';
+import BackArrow from '../images/back-arrow.svg';
 
 const Container = styled.section`
 	display: flex;
@@ -26,6 +26,7 @@ const SubTitle = styled.h2`
 	line-height: 18px;
 	font-family: "CircularStd Book", Arial, sans-serif;
 	color: #4a4a4a;
+	text-align: left;
 `
 const Price = styled.h3`
 	font-size: 20px;
@@ -42,43 +43,36 @@ const Text = styled.p`
 `
 const Image = styled.img`
 	width: 120px;
-	heigth: 150px;
-	background: red;
+	height: 150px;
 `
-const ArrowsAndCart = styled.div`
+const LinkRouteContainer = styled.div`
 	display: flex;
 	justify-content: flex-start;
-	align-items: center;
 `
-const Button = styled.button`
+const LinkRoute = styled(Link)`
 	position: relative;
-	box-sizing: border-box;
-	width: 6px;
-	height: 10px;
-	border: none;
-	outline: none;
-	cursor: pointer;
-	background: transparent;
+	& > img {
+		potision: absolute;
+		top: 0;
+		left: 0;
+		width: 18px;
+		height: 15px;
+	}
 `
-const LeftArrow = styled.img`
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 6px;
-	height: 10px;
-`
-const RightArrow = styled.img`
-	position: absolute;
-	top: 0;
-	right: 0;
-	width: 6px;
-	height: 10px;
+const RatingSingleViewedProduct = styled(Rating)`
+	display: flex;
+	& > img {
+		width: 16px;
+		height: 16px;
+	}
 `
 
-function SingleViewedProduct({clickedProduct}) {
+function SingleViewedProduct({clickedProduct, updateCard}) {
 	return(
 		<div>
-			<Link to="/">Back</Link>
+			<LinkRouteContainer>
+				<LinkRoute to="/"><img src={BackArrow} /></LinkRoute>
+			</LinkRouteContainer>
 			<Container>
 				<InfoWrapper>
 					<Title>{clickedProduct.name}</Title>
@@ -88,14 +82,10 @@ function SingleViewedProduct({clickedProduct}) {
 				</InfoWrapper>
 				<Image src={clickedProduct.picture} alt={clickedProduct.name} />
 			</Container>
-			<Rating product={clickedProduct} />
+			<SubTitle>Rating</SubTitle>
+			<RatingSingleViewedProduct clickedProduct={clickedProduct} />
 			<Sizes product={clickedProduct} />
-			<ArrowsAndCart>
-				<Button><LeftArrow src={Left} alt="left arrow"/></Button>
-				<span>1</span>
-				<Button><RightArrow src={Right} alt="right arrow"/></Button>
-				<button>Add to cart</button>
-			</ArrowsAndCart>
+			<CartCounter product={clickedProduct} updateCard={updateCard}/>
 		</div>
 	);
 }

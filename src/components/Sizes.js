@@ -42,6 +42,7 @@ const Button = styled.button`
 	}
 `
 function Sizes({product}) {
+	
 	return(
 		<Container>
 			<SubTitle>Size</SubTitle>

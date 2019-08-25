@@ -5,15 +5,21 @@ import SingleViewedProduct from './SingleViewedProduct';
 import RelatedList from './RelatedList';
 
 const Container = styled.div`
-	padding: 24px;
+	padding: 40px 20px 60px 20px;
 `
 
-function ProductPage({clickedProduct, allProductsList}) { 
-	
+function ProductPage({getClikedProduct, clickedProduct, allProductsList, updateCard}) { 
 	return(
 		<Container>
-			<SingleViewedProduct clickedProduct={clickedProduct} />
-			{/*<RelatedList allProductsList={allProductsList} />*/}
+			<SingleViewedProduct 
+				clickedProduct={clickedProduct} 
+				updateCard={updateCard}
+			/>
+			<RelatedList 
+				clickedProduct={clickedProduct}
+				getClikedProduct={getClikedProduct}  
+				allProductsList={allProductsList} 
+			/>
 		</Container>
 	);
 }
