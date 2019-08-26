@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from '@emotion/styled';
 
-import SingleProductMini from './SingleProductMini';
 import Stars from './Stars';
 
 const RatingContainer = styled.div`
@@ -13,9 +12,7 @@ const StarsConteiner = styled(Stars)`
 		width: 16px;
 		height: 16px;
 	}
-
 `
-
 const RatingNum = styled.span`
 	width: 20px;
 	margin-left: 13px;
@@ -24,9 +21,7 @@ const RatingNum = styled.span`
 	color: #9b9b9b;
 `
 
-
 export default ({clickedProduct, ...props}) => {
-	const [rating, setRating] = useState(0)
 	if(clickedProduct.length === 0) {
 		return( <RatingContainer {...props}>
 			<StarsConteiner />

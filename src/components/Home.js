@@ -15,8 +15,8 @@ function Home({data, getClikedProduct}) {
 		<HomePage>
 			<Search />
 			<TodayTrending data={data} getClikedProduct={getClikedProduct} />
-			{/*<BestSelling data={data} />*/}
-			{/*<TopCategories />*/}
+			<BestSelling data={data} getClikedProduct={getClikedProduct} />
+			<TopCategories />
 		</HomePage>
 	);
 }

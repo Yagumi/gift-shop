@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import axios from 'axios';
 
 import './App.css';
@@ -15,7 +15,6 @@ function App() {
     setClickedProduct([])
     setClickedProduct(product)
   }
-  
   const updateCard = ({productId, productCount}) => {
     const productCart = {
       productId : productId,

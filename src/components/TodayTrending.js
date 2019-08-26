@@ -12,9 +12,6 @@ const TodayTrendingList = styled.ul`
 	overflow-x: auto;
 	padding: 0;
 `
-const TodayTrendingItem = styled.li`
-	
-`
 
 function TodayTrending({data, getClikedProduct}) {
 	const goodsList = data.map(good => (

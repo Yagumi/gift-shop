@@ -9,19 +9,19 @@ import chocolate from '../images/chocolate.png';
 import giftWithCard from '../images/gift-with-card.png';
 import TopCategoriesSingleProduct from './TopCategoriesSingleProduct';
 
-const Container = styled.div`
+const TopCategoriesContainer = styled.div`
 padding-left: 19px;
 `
-const Header = styled.header`
+const TopCategoriesHeader = styled.header`
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 `
-const Name = styled.h1`
+const TopCategoriesName = styled.h1`
 	font-size: 21px;
 	line-height: 18px;
 `
-const Button = styled.button`
+const TopCategoriesButton = styled.button`
 	align-item: center;
 	color: #6f8ecf;
 	outline: none;
@@ -30,7 +30,7 @@ const Button = styled.button`
 	font-size: 10px;
 	cursor: pointer;
 `
-const List = styled.ul`
+const TopCategoriesList = styled.ul`
 	padding: 0;
 	display: flex;
 	justify-content: space-between;
@@ -63,21 +63,22 @@ function TopCategories() {
 			bgc: "linear-gradient( -59.49deg, rgb(207,149,255) 0%, rgb(59,92,254) 100%)"
 		},
 	])
+	
 	const goodsList = categories.map(item => (
-		<Link to="/product">
-			<TopCategoriesSingleProduct key={item.id} item={item} />
+		<Link to="/product" key={item.id}>
+			<TopCategoriesSingleProduct item={item} />
 		</Link>
 	))
 	return(
-		<Container>
-			<Header>
-				<Name>Top Categories</Name>
-				<Button>See all</Button>
-			</Header>
-			<List>
+		<TopCategoriesContainer>
+			<TopCategoriesHeader>
+				<TopCategoriesName>Top Categories</TopCategoriesName>
+				<TopCategoriesButton>See all</TopCategoriesButton>
+			</TopCategoriesHeader>
+			<TopCategoriesList>
 				{goodsList}
-			</List>
-		</Container>
+			</TopCategoriesList>
+		</TopCategoriesContainer>
 	);
 }
 

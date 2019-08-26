@@ -71,7 +71,7 @@ function SingleViewedProduct({clickedProduct, updateCard}) {
 	return(
 		<div>
 			<LinkRouteContainer>
-				<LinkRoute to="/"><img src={BackArrow} /></LinkRoute>
+				<LinkRoute to="/"> <img src={BackArrow} alt="back arrow" /></LinkRoute>
 			</LinkRouteContainer>
 			<Container>
 				<InfoWrapper>
