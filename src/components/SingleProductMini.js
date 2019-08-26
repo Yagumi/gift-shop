@@ -76,7 +76,7 @@ export default({clickedProduct, getClikedProduct, product, ...props}) => {
 			<SingleProductMiniTitle>{product.name}</SingleProductMiniTitle>
 			<SingleProductMiniRatingContainer>
 				<SingleProductMiniStars />
-				<span>({product.rate})</span> {/*Change this stroke*/}
+				<span>({product.rate})</span> 
 			</SingleProductMiniRatingContainer>
 		</SingleProductMiniContainer>
 	);

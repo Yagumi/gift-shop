@@ -32,7 +32,7 @@ export default ({clickedProduct, ...props}) => {
 	return(
 		<RatingContainer {...props}>
 			<StarsConteiner />
-			<RatingNum>({clickedProduct.rate.reduce((sum, prev) => sum + prev)})</RatingNum>
+			<RatingNum>({clickedProduct.rate})</RatingNum>
 		</RatingContainer>
 	);
 }

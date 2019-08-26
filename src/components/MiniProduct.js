@@ -49,7 +49,7 @@ function MiniProduct({product, getClikedProduct}) {
 			<MiniProductInfo>
 				<MiniProductName>{product.name}</MiniProductName>
 				<MiniProductCompany>{product.company}</MiniProductCompany>
-				<div>raiting({product.rate.reduce(rate => rate)})</div>
+				<div>({product.rate})</div>
 				<button>Add to cart</button>
 			</MiniProductInfo>
 		</MiniProductContainer>

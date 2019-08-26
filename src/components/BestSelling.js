@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from '@emotion/styled';
 import { Link } from 'react-router-dom';
 
@@ -38,35 +38,19 @@ const BestSellingButton = styled.button`
 `
 
 function BestSelling({data, getClikedProduct}) {
-	
-	const sort = () => {
-		if(data.length !== 0) {
-		const newData = data.slice();
+	const [sortedData, setSortedData] = useState([]);
 
-		const rateArr = newData.map(function(item) {
-			let rateArr = [];
-			rateArr = item.rate
-			let reducer =	[];
-			reducer = rateArr.reduce((sum, current) => sum + current)
-			item.rate = reducer;
-			return item;
-		})
-
+	useEffect(() => {
+		const copyData = data.slice();
 		const sortArr = (a, b) => {
 			return b.rate - a.rate 
 		};
-
-		const sortedArr = rateArr.sort(sortArr);
-		return sortedArr;
-
-		} else {
-			return []
-		}
-	};
-	// console.log(sort())
+		const sortedArr = copyData.sort(sortArr);
+		setSortedData(sortedArr)
+	},[data])
 	
-	
-	const goodsList = sort().map(good => (
+
+	const goodsList = sortedData.map(good => (
 		<Link 
 			to={`/product/${good.name}`} 
 			key={good._id}
