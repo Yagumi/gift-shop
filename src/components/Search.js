@@ -24,10 +24,13 @@ const SearchInput = styled.input`
 `
 const SearchImg = styled.img`
 	position: absolute;
-	top: 25px;
-	right: 0;
+	top: 15px;
+	right: 18px;
 	width: 15px;
 	height: 15px;
+	&:hover {
+		cursor: pointer;
+	}
 `
 
 function Search() {

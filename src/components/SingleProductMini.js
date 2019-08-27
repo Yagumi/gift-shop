@@ -5,7 +5,6 @@ import styled from '@emotion/styled';
 import Stars from './Stars';
 
 const SingleProductMiniContainer = styled.div`
-	margin-right: 17px;
   width: 95px;
   height: 100%;
   display: flex;
@@ -32,6 +31,9 @@ const SingleProductMiniContainer = styled.div`
   	padding-top: 8px;
   	box-sizing: border-box;
 	}
+	@media(min-width: 768px) {
+    width: 120px;
+  }
 `
 const Image = styled.img`
 	width: 95px;

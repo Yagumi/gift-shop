@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useReducer,useEffect, useState } from 'react';
 import styled from '@emotion/styled';
 
 const Container = styled.div`
@@ -41,14 +41,79 @@ const Button = styled.button`
 		border: 1px solid #8ea2ff;
 	}
 `
-function Sizes({product}) {
+
+const initialSize = {
+	size: "",
+}
+
+const reducer = function(state, action) {
+	switch(action.type) {
+		case 'small': 
+			return {
+				...state, size: "small"
+			};
+		case 'medium':
+			return {
+				...state, size: "medium"
+			};
+		case 'big':
+			return {
+				...state, size: "big"
+			};
+		case 'reset':
+			return {
+				...state, size: ''
+			}
+		default:
+			throw new Error();
+	}
+}
+
+function Sizes({product, getSize, ...props}) {
+	const [state, dispatch] = useReducer(reducer, initialSize);
+	const [popUp, setPopUp] = useState(false)
 	
+	useEffect(() => {
+		if(product.sizes !== undefined) {
+			const arr = [];
+			let obj = {}
+			obj = product.sizes;
+			Object.keys(obj).forEach(function(key) {
+				arr.push(obj[key])
+			})
+			console.log(arr)
+			if(arr.every(item => item === false)) {
+				setPopUp(true)		
+			} else {
+				setPopUp(false)	
+			}
+		}
+	},[product])
+
+	useEffect(() => {
+		getSize(state.size)
+	},[state])
+	
+	if(product.sizes === undefined) {
+		return(
+			<Container>
+				<SubTitle>Size</SubTitle>
+			</Container>
+		)
+	}
+	if(popUp) {
+		return(
+			<Container>
+				<SubTitle>Sorry there is no this gift now!</SubTitle>
+			</Container>
+		)
+	}
 	return(
 		<Container>
 			<SubTitle>Size</SubTitle>
-			<Button>Small<br /><span>10cm x 24cm</span></Button>
-			<Button>Medium<br /><span>14cm x 28cm</span></Button>
-			<Button>Large<br /><span>18cm x 32cm</span></Button>
+			{product.sizes.small && <Button className ="small" onClick={() => dispatch({type: 'small'})}>Small<br /><span>10cm x 24cm</span></Button>}
+			{product.sizes.medium && <Button className ="medium" onClick={() => dispatch({type: 'medium'})}>Medium<br /><span>14cm x 28cm</span></Button>}
+			{product.sizes.big && <Button className ="big" onClick={() => dispatch({type: 'big'})}>Large<br /><span>18cm x 32cm</span></Button>}
 		</Container>
 	);
 }

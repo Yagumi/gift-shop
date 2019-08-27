@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import SingleProductMini from './SingleProductMini';
 
 const BestSellingContainer = styled.div`
-	
+	margin-top: 40px;
 `
 const BestSellingHeader = styled.header`
 	display: flex;
@@ -13,6 +13,7 @@ const BestSellingHeader = styled.header`
 	align-items: center;
 `
 const BestSellingTitle = styled.h1`
+	margin: 0;
 	font-size: 21px;
 	line-height: 18px;
 `
@@ -26,6 +27,9 @@ const BestSellingList = styled.ul`
 	display: flex;
 	justify-content: space-between;
 	overflow-x: auto;
+	&::-webkit-scrollbar { 
+    display: none; 
+	}
 `
 const BestSellingButton = styled.button`
 	align-item: center;
@@ -35,6 +39,14 @@ const BestSellingButton = styled.button`
 	border: none;
 	font-size: 10px;
 	cursor: pointer;
+`
+const BestSellingRoute = styled(Link)`
+	text-decoration: none;
+	width: 95px;
+	margin-right: 16px;
+	@media(min-width: 768px) {
+    width: 120px;
+  }
 `
 
 function BestSelling({data, getClikedProduct}) {
@@ -51,7 +63,7 @@ function BestSelling({data, getClikedProduct}) {
 	
 
 	const goodsList = sortedData.map(good => (
-		<Link 
+		<BestSellingRoute 
 			to={`/product/${good.name}`} 
 			key={good._id}
 		>
@@ -59,7 +71,7 @@ function BestSelling({data, getClikedProduct}) {
 				product={good}
 				getClikedProduct={getClikedProduct} 
 			/>
-		</Link>
+		</BestSellingRoute>
 	))
 	return(
 		<BestSellingContainer>

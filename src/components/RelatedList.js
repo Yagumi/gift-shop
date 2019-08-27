@@ -33,6 +33,8 @@ const RelatedListContainer = styled.div`
 `
 const RelatedListProductsContainer = styled(Link)`
 	text-decoration: none;
+	margin-right: 17px;
+	
 `
 
 

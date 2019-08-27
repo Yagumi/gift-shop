@@ -1,11 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import axios from 'axios';
+import styled from '@emotion/styled';
 
 import './App.css';
 
 import Home from './components/Home';
 import ProductPage from './components/ProductPage';
+
+const AppContainer = styled.div`
+  width: 375px;
+  margin: 0 auto;
+  @media(min-width: 768px) {
+    width: 768px;
+
+  }
+}
+
+`
 
 function App() {
   const [data, setData] = useState([]);
@@ -15,10 +27,11 @@ function App() {
     setClickedProduct([])
     setClickedProduct(product)
   }
-  const updateCard = ({productId, productCount}) => {
+  const updateCard = ({productId, productCount, productSize}) => {
     const productCart = {
       productId : productId,
-      productCount: productCount
+      productCount: productCount,
+      productSize: productSize
     }
     setCart([...cart, productCart])
   }
@@ -38,9 +51,9 @@ function App() {
     };
     fetchData();
   }, []);
-
+console.log(cart)
   return (
-    <div className="App">
+    <AppContainer>
       <Switch>
         <Route 
           exact 
@@ -70,7 +83,7 @@ function App() {
           render={() => <h1>Error 404!</h1>}
         />
       </Switch>
-    </div>
+    </AppContainer>
   );
 }
 

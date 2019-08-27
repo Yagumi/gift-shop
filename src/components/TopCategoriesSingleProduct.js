@@ -1,30 +1,46 @@
 import React from 'react';
 import styled from '@emotion/styled';
 
-const Container = styled.div`
+const TopCategoriesSingleProductContainer = styled.div`
 	width: 72px;
+	@media(min-width: 768px) {
+    margin-right: 20px;
+    width: 100%;
+  }
 `
-const ImageWrapper = styled.div`
+const TopCategoriesSingleProductImageWrapper = styled.div`
 	height: 50px;
 	padding-top: 6px;
 	box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.05);
 	border-radius: 5px;
+	@media(min-width: 768px) {
+    width: 140px;
+    height: 100px;
+  }
 `
-const Image = styled.img`
+const TopCategoriesSingleProductImage = styled.img`
+	@media(min-width: 768px) {
+  	padding-top: 30px;
+  	padding-left: 50px; 
+  }
 `
-const Name = styled.h3`
+const TopCategoriesSingleProductName = styled.h3`
 	color: #4a4a4a;
 	font-size: 11px;
 	text-align: left;
+	@media(min-width: 768px) {
+    font-size: 18px;
+    line-heigh: 18px;
+  }
 `
 
 export default ({item, ...props})  => {
 	return(
-		<Container {...props} >
-			<ImageWrapper style={{background: item.bgc}}>
-				<Image src={item.url} alt={item.name}/>
-			</ImageWrapper>
-			<Name>{item.name}</Name>
-		</Container>
+		<TopCategoriesSingleProductContainer {...props} >
+			<TopCategoriesSingleProductImageWrapper style={{background: item.bgc}}>
+				<TopCategoriesSingleProductImage src={item.url} alt={item.name}/>
+			</TopCategoriesSingleProductImageWrapper>
+			<TopCategoriesSingleProductName>{item.name}</TopCategoriesSingleProductName>
+		</TopCategoriesSingleProductContainer>
 	);
 }
