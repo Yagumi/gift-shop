@@ -40,6 +40,14 @@ const SingleViewedProductText = styled.p`
 	line-height: 18px;
 	font-family: "CircularStd Book", Arial, sans-serif;
 	color: #9b9b9b;
+	@media(min-width: 768px) {
+    width: 80%;
+  }
+`
+const SingleViewedProductImageContainer = styled.div`
+	@media(min-width: 768px) {
+    width: 20%;
+  }
 `
 const SingleViewedProductImage = styled.img`
 	width: 120px;
@@ -87,7 +95,9 @@ function SingleViewedProduct({clickedProduct, updateCard}) {
 					<SingleViewedProductPrice>${clickedProduct.price}</SingleViewedProductPrice>
 					<SingleViewedProductText>{clickedProduct.about}</SingleViewedProductText>
 				</SingleViewedProductInfoWrapper>
-				<SingleViewedProductImage src={clickedProduct.picture} alt={clickedProduct.name} />
+				<SingleViewedProductImageContainer>
+					<SingleViewedProductImage src={clickedProduct.picture} alt={clickedProduct.name} />
+				</SingleViewedProductImageContainer>
 			</SingleViewedProductContainer>
 			<SingleViewedProductSubTitle>Rating</SingleViewedProductSubTitle>
 			<SingleViewedProductRating clickedProduct={clickedProduct} />
